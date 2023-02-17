@@ -1,9 +1,15 @@
 const express = require("express")
+var bodyParser = require('body-parser')
+var jsonParser = bodyParser.json()
+
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const app = express()
 
-app.get('/',(req, res) =>{
-    res.send("ola")
+app.post('/getHTML', urlencodedParser, (req, res) =>{
+    // const {nome} = req.body
+
+   res.send(req.body.nome)
 })
 
 app.listen(8080, ()=>{
